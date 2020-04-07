@@ -10,6 +10,8 @@ import Link from '@material-ui/core/Link';
 import CustomChart from './Chart';
 import CustomCard from './Card';
 
+import CustomTabs from './Tabs';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -128,10 +130,24 @@ export default function Dashboard1(props){
   const theme = useTheme();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
-        <div style={{display:'flex',flexDirection:'column',flex:'1',background:"#EEEEEE"}}>
+        <div style={{display:'flex',flexDirection:'column',overflowY:'scroll',
+        flex:'1',background:"#EEEEEE"}}>
           <CustomCard/>
           <CustomChart/>
+
+          <Grid style={{marginTop:5,paddingBottom:10}} container spacing={4} >
+              <Grid item xs={6}>
+                <CustomTabs/>
+
+              </Grid>
+              <Grid item xs={6}>
+
+              </Grid>
+              
+          </Grid>
           </div>
+
+          
 
     );
 }

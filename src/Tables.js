@@ -9,10 +9,45 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import SimpleTable from "./SimpleTable";
 
+
+const useStyles = makeStyles({
+  root:{
+      width: '100%',
+      height:'100%',
+      display:'flex',
+      flexDirection:'column',
+      flex:'1',
+      background:"#EEEEEE"
+  },
+  container:{
+      maxHeight:400,
+      padding:20,
+      display:'flex',
+      flexDirection:'column',
+      flex:'1',
+      background:"#EEEEEE"
+  },
+table: {
+  marginBottom: "0",
+  backgroundColor: "transparent",
+  borderSpacing: "0",
+  borderCollapse: "collapse"
+},
+tablecell:
+{
+  color:"#9E42B0",
+  fontSize: "0.8125rem"
+
+}
+,
+tablecell1:{
+  fontSize: "1em"
+}
+});
 export default function Tables(props){
   const { container } = props;
   return (
-      <div style={{display:'flex',flexDirection:'column',flex:'1',background:"#EEEEEE"}}>
+      <div >
         <SimpleTable/>
         </div>
 

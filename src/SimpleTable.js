@@ -11,17 +11,11 @@ import Paper from '@material-ui/core/Paper';
 const useStyles = makeStyles({
     root:{
         width: '100%',
-        display:'flex',
-        flexDirection:'column',
-        flex:'1',
         background:"#EEEEEE"
     },
     container:{
-        maxHeight:400,
+        maxHeight:440,
         padding:20,
-        display:'flex',
-        flexDirection:'column',
-        flex:'1',
         background:"#EEEEEE"
     },
   table: {
@@ -33,12 +27,14 @@ const useStyles = makeStyles({
   tablecell:
   {
     color:"#9E42B0",
-    fontSize: "0.8125rem"
+    fontSize: "0.8125rem",
+    minWidth:170,
 
   }
   ,
   tablecell1:{
-    fontSize: "1em"
+    fontSize: "1em",
+    minWidth:170,
   }
 });
 
@@ -59,13 +55,13 @@ export default function SimpleTable() {
 
   return (
     
-          <div style={{display:'flex',flexDirection:'column',flex:'1',background:"#EEEEEE"}}>
+    
           
     <Paper className={classes.root}>
     <TableContainer className={classes.container} >
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
-          <TableRow>
+          <TableRow xs={12} sm={6} md={3}>
             <TableCell className={classes.tablecell} >ID</TableCell>
             <TableCell className={classes.tablecell} align="right">Name</TableCell>
             <TableCell className={classes.tablecell} align="right">Country</TableCell>
@@ -89,8 +85,6 @@ export default function SimpleTable() {
       </Table>
     </TableContainer>
     </Paper>
-
-    </div>
       
   );
 }
