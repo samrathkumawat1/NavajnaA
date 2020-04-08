@@ -9,6 +9,8 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import SimpleTable from "./SimpleTable";
 
+import TablePage from "./m_table";
+
 
 const useStyles = makeStyles({
   root:{
@@ -47,8 +49,12 @@ tablecell1:{
 export default function Tables(props){
   const { container } = props;
   return (
-      <div >
-        <SimpleTable/>
+      <div style={{display:'flex',
+      flex: 1,flexDirection:'row',
+      
+      background:'black',
+      }} >
+        
         </div>
 
   );

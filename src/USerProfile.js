@@ -19,6 +19,9 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from "@material-ui/core/InputLabel";
 import Button from '@material-ui/core/Button';
+import Colors from './Colors';
+
+import avatar from "./assets/marc.jpg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,14 +31,56 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom:10,
   },
   textField: {
-    color:"#943FAD",
-  
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width:'auto',
-    margin:10,
+    color:theme.spacing('#9E42B0'),
+    
     marginTop:10,
   },
+  cardAvater:{
+    maxWidth: "130px",
+    maxHeight: "130px",
+    margin: "-50px auto 0",
+    borderRadius: "50%",
+    marginTop:20,
+    overflow: "hidden",
+    padding: "0",
+  },
+  cardCategory: {
+    color: "#C7C7C7",
+    marginTop: 25,
+    marginBottom: 15,
+
+    fontSize: "11px",
+    fontWeight: "300",
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    marginBottom: "0"
+  },
+  cardTitle: {
+    color: "#6C7581",
+    marginTop: 15,
+    marginBottom: 15,
+    minHeight: "auto",
+    fontWeight: "300",
+    fontSize: "17px",
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    textDecoration: "none"
+  },
+  description: {
+    color: "#C7C7C7",
+    marginTop: 15,
+    marginBottom: 15,
+    minHeight: "auto",
+    fontWeight: "300",
+    fontSize: "12px",
+    alignItems:'center',
+    marginLeft:40,
+    marginRight:40,
+    textAlign: 'center',
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    textDecoration: "none"
+  }
+
 }));
 
 export default function USerProfile() {
@@ -45,8 +90,8 @@ export default function USerProfile() {
   return (
 
     <div style={{width:'550',heigth:'650'}}>
-    <Grid style={{marginTop:5,paddingBottom:10}} container spacing={2} >
-        <Grid item xs={8} >
+    <Grid style={{marginTop:5,paddingBottom:10,padding:15}}  container spacing={2} >
+        <Grid item xs={12} sm={12} md={8}>
 
         <Card variant="outlined">
 
@@ -62,43 +107,39 @@ export default function USerProfile() {
   
             </div>
         </Card>
-        <Card className={classes.root} variant="outlined">
-
-
-        <Grid container >
+          <Card className={classes.root} variant="outlined">
+            <Grid container  style={{marginTop:5,paddingBottom:10,padding:15}}>
 
 
         <Grid item xs={12} sm={12} md={5}>
         <TextField
           id="standard-full-width"
           disabled
-          color="#943FAD"
           className={classes.textField}
           label="Company (disabled)"
           margin="dense"
         />
         </Grid>
-        <Grid item xs={12} sm={12} md={3}>
+        <Grid item xs={12} sm={12} md={5}>
         <TextField
           id="margin-dense"
           label="Username"
-          color="#943FAD"
+          color=""
           className={classes.textField}
           margin="dense"
         />
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={5}>
         <TextField
           id="margin-dense"
           label="Email Address"
-          color="#943FAD"
           className={classes.textField}
           margin="dense"
         />
         </Grid>
         
 
-        <Grid item  xs={6}  >
+        <Grid item  xs={12} sm={12} md={6}  >
         <TextField
           id="margin-dense"
           label="First Name"
@@ -106,10 +147,11 @@ export default function USerProfile() {
           margin="dense"/>
         </Grid>
 
-        <Grid item  xs={6}  >
+        <Grid item  xs={12} sm={12} md={6}>
         <TextField
           id="margin-dense"
           label="Last Name"
+          color={Colors.main}
           className={classes.textField}
           margin="dense"/>
         </Grid>
@@ -127,7 +169,7 @@ export default function USerProfile() {
         </Grid>
 
 
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} md={4}>
         <TextField
           id="standard-full-width"
           style={{ margin: 8 }}
@@ -136,7 +178,7 @@ export default function USerProfile() {
           margin="dense"
         />
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} md={4}>
         <TextField
           id="margin-dense"
           label="Country"
@@ -144,7 +186,7 @@ export default function USerProfile() {
           margin="dense"
         />
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} md={4}>
         <TextField
           id="margin-dense"
           label="Postal Code"
@@ -153,12 +195,12 @@ export default function USerProfile() {
         />
         </Grid>
 
-        <Grid item  xs={12}  >
-        <InputLabel style={{ color: "#AAAAAA" }}>About me</InputLabel>
+        <Grid item  xs={12} sm={12} md={12}  >
+        <InputLabel style={{ marginLeft:8,marginTop:30,color: "#AAAAAA" }}>About me</InputLabel>
         <TextField
           id="filled-full-width"
           label="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-          style={{ margin: 8 }}
+          style={{ margin: 10 ,paddingTop:25}}
           fullWidth
           multiline
           rows="5"
@@ -167,28 +209,36 @@ export default function USerProfile() {
         
         />
         </Grid>
-        <Button style={{display:'flex',flexDirection:'row-reverse',marginTop:10,background:"#943FAD",color:"white"}} variant="contained" color="#943FAD">Update Profile</Button>
-      
+        <div style={{display:'flex',flex:1,flexDirection:'row-reverse',marginTop:10}} >
+        <Button style={{marginTop:10,background:"#943FAD",color:"white"}} variant="contained" >Update Profile</Button>
+        </div>
         </Grid>
        
-        </Card>
+          </Card>
         </Grid>
 
-        <Grid item xs={4} >
-        <Card className={classes.root} variant="outlined">
-
-            <div style={{display:'flex',paddingLeft:10,position:'relative',
-            paddingTop:10,paddingBottom:10,flexDirection:'row',textAlign:'justify'}} >
-                
-                <div style={{width:'auto',textAlign: 'left',display: "flex",
-                justifyContent:"center",
-                            alignItems: "center",height:50,background:"#F39231"}}>
-                <p style={{color:'white'}}>Edit Profile</p>
-                <h3 style={{color:'white'}} >Complete your profile</h3>
-                </div>
-  
-            </div>
-        </Card>
+        <Grid item xs={12} sm={12} md={4} >
+        <Card profile>
+            <Card profile className={classes.cardAvater}>
+              <a href="#pablo" onClick={e => e.preventDefault()}>
+                <img src={avatar}  />
+              </a>
+            </Card>
+            <Card style={{alignItems:'center',textAlign: 'center',
+    justify: 'center',
+    alignContent: 'center',}} profile>
+              <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
+              <h4 className={classes.cardTitle}>Alec Thompson</h4>
+              <p className={classes.description}>
+                Don{"'"}t be scared of the truth because we need to restart the
+                human foundation in truth And I love you like Kanye loves Kanye
+                I love Rick Owens’ bed design but the back is...
+              </p>
+              <Button round style={{marginTop:10,marginBottom:20,background:"#943FAD",color:"white"}} round >
+                Follow
+                </Button>
+            </Card>
+          </Card>
         </Grid>
 
         </Grid>

@@ -9,82 +9,53 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
-    root:{
-        width: '100%',
-        background:"#EEEEEE"
-    },
-    container:{
-        maxHeight:440,
-        padding:20,
-        background:"#EEEEEE"
-    },
   table: {
-    marginBottom: "0",
-    backgroundColor: "transparent",
-    borderSpacing: "0",
-    borderCollapse: "collapse"
+    minWidth: 650,
+    width:650,
   },
-  tablecell:
-  {
-    color:"#9E42B0",
-    fontSize: "0.8125rem",
-    minWidth:170,
-
-  }
-  ,
-  tablecell1:{
-    fontSize: "1em",
-    minWidth:170,
-  }
 });
 
-function createData(id, name,country, city, salary) {
-  return { id,name, country, city, salary };
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
 }
 
 const rows = [
-  createData('1',"Samrath", "India","Jaipur","$12,000"),
-  createData('2',"Tom", "India","Jaipur","$12,000"),
-  createData('3',"Abhijeet", "India","Jaipur","$12,000"),
-  createData('4',"Deepika", "India","Jaipur","$12,000"),
-  createData('5',"Amit", "India","Jaipur","$12,000"),
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
 export default function SimpleTable() {
   const classes = useStyles();
 
   return (
-    
-    
-          
-    <Paper className={classes.root}>
-    <TableContainer className={classes.container} >
+    <TableContainer style={{width:'100%',}} component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
-          <TableRow xs={12} sm={6} md={3}>
-            <TableCell className={classes.tablecell} >ID</TableCell>
-            <TableCell className={classes.tablecell} align="right">Name</TableCell>
-            <TableCell className={classes.tablecell} align="right">Country</TableCell>
-            <TableCell className={classes.tablecell} align="right">City</TableCell>
-            <TableCell className={classes.tablecell} align="right">Salary</TableCell>
+          <TableRow>
+            <TableCell>Dessert (100g serving)</TableCell>
+            <TableCell align="right">Calories</TableCell>
+            <TableCell align="right">Fat&nbsp;(g)</TableCell>
+            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+            <TableCell align="right">Protein&nbsp;(g)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={row.id}>
-            <TableCell className={classes.tablecell1} component="th" scope="row">{row.id}</TableCell>
-              
-              <TableCell className={classes.tablecell1}  align="right">{row.name}</TableCell>
-              <TableCell className={classes.tablecell1} align="right">{row.country}</TableCell>
-              <TableCell className={classes.tablecell1} align="right">{row.city}</TableCell>
-              <TableCell className={classes.tablecell1} align="right">{row.salary}</TableCell>
-              
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              <TableCell align="right">{row.calories}</TableCell>
+              <TableCell align="right">{row.fat}</TableCell>
+              <TableCell align="right">{row.carbs}</TableCell>
+              <TableCell align="right">{row.protein}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
-    </Paper>
-      
   );
 }

@@ -317,7 +317,7 @@ const { container } = props;
           </Drawer>
         </Hidden>
       </nav>
-      <main style={{background:"#EEEEEE",padding:30,paddingTop:80}}>
+      <main style={{background:"#EEEEEE   ",padding:30,paddingTop:80}}>
         <Switch>
               <Route path="/" exact component={Dashboard1} />
               <Route path="/USerProfile" component={USerProfile} />
