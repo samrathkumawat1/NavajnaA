@@ -49,11 +49,8 @@ tablecell1:{
 export default function Tables(props){
   const { container } = props;
   return (
-      <div style={{display:'flex',
-      flex: 1,flexDirection:'row',
-      
-      background:'black',
-      }} >
+      <div style={{width:'100%'}} >
+        <SimpleTable/>
         
         </div>
 
