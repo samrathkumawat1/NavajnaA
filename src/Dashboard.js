@@ -133,7 +133,7 @@ export default function Dashboard1(props){
   const theme = useTheme();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
-        <div style={{display:'flex',flexDirection:'column',overflowY:'scroll',
+        <div style={{display:'flex',flexDirection:'column',
         flex:'1',background:"#EEEEEE"}}>
           <CustomCard/>
           <CustomChart/>

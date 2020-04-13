@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
 
 
 import PhoneIcon from '@material-ui/icons/Phone';
@@ -16,6 +17,8 @@ import PersonPinIcon from '@material-ui/icons/PersonPin';
 import BugReportIcon from '@material-ui/icons/BugReport';
 import CloudQueueIcon from '@material-ui/icons/CloudQueue';
 import CodeIcon from '@material-ui/icons/Code';
+
+import Task from './Task';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -164,14 +167,23 @@ export default function CustomTabs() {
                     style={{fontSize:11}} href="/spam" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        Page One
+      <TabPanel  component={Paper} value={value} index={0}>
+        <Task 
+          checkedIndexes={[0, 3]}
+          tasksIndexes={[0, 1, 2, 3]}
+          tasks="Bugs"/>
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        Page Two
+      <TabPanel component={Paper} value={value} index={1}>
+      <Task 
+          checkedIndexes={[0, 3]}
+          tasksIndexes={[0, 1, 2, 3]}
+          tasks="Website"/>
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Page Three
+      <TabPanel component={Paper} value={value} index={2}>
+      <Task 
+          checkedIndexes={[0, 3]}
+          tasksIndexes={[0, 1, 2, 3]}
+          tasks="Server"/>
       </TabPanel>
     </div>
   );
