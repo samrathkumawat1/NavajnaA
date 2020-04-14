@@ -54,6 +54,17 @@ import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 
+
+
+import MenuList from "@material-ui/core/MenuList";
+import Grow from "@material-ui/core/Grow";
+
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+
+
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -167,6 +178,18 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  selectedItemStyle:{
+    backgroundColor: "turquoise !important",
+    color: "white",
+    fontWeight: 600
+  },
+  inactive: {
+    backgroundColor: "#ffffff",
+}
+,
+active: {
+    backgroundColor: 'red',
+  }
 }));
   
 export default function Admin(props) {
@@ -177,20 +200,46 @@ const { container } = props;
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  const [openProfile, setOpenProfile] = React.useState(null);
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClickProfile = event => {
+    if (openProfile && openProfile.contains(event.target)) {
+      setOpenProfile(null);
+    } else {
+      setOpenProfile(event.currentTarget);
+    }
+  };
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
+    
+
   }
+  const handleCloseProfile = () => {
+    setOpenProfile(null);
+  };
 
     const mainListItems=(
         <div>
     
-          <NavLink to="/">  
-          <ListItem 
+          <NavLink to="/" className="inactive" 
+          
+          activeClassName="active">  
+          <MenuItem 
           button
+          
           selected={selectedIndex === 0}
+          
+          
           onClick={(event) => handleListItemClick(event, 0)}>
           
             <ListItemIcon>
@@ -199,11 +248,11 @@ const { container } = props;
             <ListItemText disableTypography style={{fontFamily:'sans-serif',
                             fontSize:14,color:'#666666'}} primary="Dashboard" />
           
-                            </ListItem>
+          </MenuItem>
     
           </NavLink>      
     
-          <NavLink to="/USerProfile">
+          <NavLink to="/USerProfile" className="inactive" activeClassName="active">
     
           <ListItem 
           button
@@ -218,7 +267,7 @@ const { container } = props;
           </NavLink> 
           
     
-        <NavLink to="/TableList">
+        <NavLink to="/TableList" className="inactive" activeClassName="active">
           <ListItem button
           selected={selectedIndex === 2}
           onClick={(event) => handleListItemClick(event, 2)}>
@@ -230,7 +279,7 @@ const { container } = props;
           </ListItem>
           </NavLink>
     
-        <NavLink to="/Notification">
+        <NavLink to="/Notification" className="inactive" activeClassName="active">
           <ListItem button
           selected={selectedIndex === 3}
           onClick={(event) => handleListItemClick(event, 3)}>
@@ -277,9 +326,43 @@ const { container } = props;
             Dashboard
           </Typography>
 
-          <IconButton primary aria-label="delete" color="black">
+          <IconButton onClick={handleClickProfile} primary  color="black">
                 <PersonOutlineIcon/>
           </IconButton>
+
+          <Menu
+        id="simple-menu"
+        anchorEl={openProfile}
+        
+        open={Boolean(openProfile)}
+        
+      >
+                <Paper>
+                <ClickAwayListener onClickAway={handleCloseProfile}>
+                  <MenuList role="menu">
+                    <MenuItem
+                      onClick={handleCloseProfile}
+                      className={classes.dropdownItem}
+                    >
+                      Profile
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleCloseProfile}
+                      className={classes.dropdownItem}
+                    >
+                      Settings
+                    </MenuItem>
+                    <Divider light />
+                    <MenuItem
+                      onClick={handleCloseProfile}
+                      className={classes.dropdownItem}
+                    >
+                      Logout
+                    </MenuItem>
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+              </Menu>
 
         </Toolbar>
       </AppBar>
@@ -311,9 +394,9 @@ const { container } = props;
             }}
             variant="permanent"
             open
-            
           >
             {mainListItems}
+            
           </Drawer>
         </Hidden>
       </nav>

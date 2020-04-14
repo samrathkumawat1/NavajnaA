@@ -15,6 +15,8 @@ import Card from "@material-ui/core/Card";
 import CustomTabs from './Tabs';
 import SimpleTable from './SimpleTable';
 
+import CardHeader from './CardHeader';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -138,35 +140,40 @@ export default function Dashboard1(props){
           <CustomCard/>
           <CustomChart/>
 
-          <Grid style={{marginTop:5,paddingBottom:10}} container spacing={4} >
-              <Grid item xs={12} sm={12} md={6} >
-                <CustomTabs/>
-
-              </Grid>
-              <Grid xs={12} sm={12} md={6}>
-          <Card>
-            <Card color="warning">
-              <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
-              <p className={classes.cardCategoryWhite}>
-                New employees on 15th September, 2016
-              </p>
-            </Card>
-            <Card>
-              <Table
-                tableHeaderColor="warning"
-                tableHead={["ID", "Name", "Salary", "Country"]}
-                tableData={[
-                  ["1", "Dakota Rice", "$36,738", "Niger"],
-                  ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                  ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                  ["4", "Philip Chaney", "$38,735", "Korea, South"]
-                ]}
-              />
-            </Card>
-          </Card>
-        </Grid>
+          <Grid container style={{marginTop:20,paddingBottom:10} } spacing={2}>
               
+              <Grid item xs={12} sm={12} md={6} >
+                < CustomTabs/>
+              </Grid>
+
+              
+               <Grid item style={{paddingBottom:10}} 
+               xs={12} sm={12} md={6} >
+               
+               <Card variant="outlined">
+                  <CardHeader 
+                    cardBackgroundColor="#f49c31"
+              headerTitle="Employees State"
+              actionTitle="New employees on 15th September, 2016"
+                  />  
+                  <SimpleTable 
+                    tableHeaderColor="#f49c31"
+              tableHead={["ID", "Name", "Salary", "Country"]}
+              tableData={[
+                    ["1", "Dakota Rice", "$36,738", "Niger"],
+                    ["2", "Minerva Hooper", "$23,789", "Curaçao"],
+                    ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
+                    ["4", "Philip Chaney", "$38,735", "Korea"]
+                    ]}
+                  />
+                  </Card>
+               </Grid>
+               
           </Grid>
+          
+          
+          
+          
           </div>
 
           

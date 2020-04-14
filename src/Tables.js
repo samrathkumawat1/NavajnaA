@@ -8,8 +8,11 @@ import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import SimpleTable from "./SimpleTable";
+import Grid from '@material-ui/core/Grid';
 
 import TablePage from "./m_table";
+import CardHeader from "./CardHeader";
+import Card from '@material-ui/core/Card';
 
 
 const useStyles = makeStyles({
@@ -49,9 +52,57 @@ tablecell1:{
 export default function Tables(props){
   const { container } = props;
   return (
-      <div style={{width:'100%'}} >
-        <SimpleTable/>
+      <div style={{display:'flex',flexDirection:'column',
+      background:"#EEEEEE"}} >
         
+      
+        
+          <Grid item xs={12} sm={12} md={12} >
+          <Card variant="outlined">
+          <CardHeader 
+        cardBackgroundColor="#9E42B0"
+        headerTitle="Simple Table"
+        actionTitle="Here is a subtitle for this table"
+        />  
+
+        <SimpleTable 
+        tableHeaderColor="#9E42B0"
+        tableHead={["ID", "Name", "Country", "City", "Salary"]}
+        tableData={[
+          ['1', "Samrath","India","Jaipur","$12,000"],
+          ['2', "Samrath","India","Jaipur","$12,000"],
+          ['3', "Samrath","India","Jaipur","$12,000"],
+          ['4', "Samrath","India","Jaipur","$12,000"],
+          ['5', "Samrath","India","Jaipur","$12,000"],
+        ]}
+        />
+</Card>
+          </Grid>
+          
+
+          <Grid style={{marginTop:20}} item xs={12} sm={12} md={12} >
+
+          <CardHeader 
+        cardBackgroundColor="#9E42B0"
+        headerTitle="Table on Plain Background"
+        actionTitle="Here is a subtitle for this table"
+        />  
+
+        <SimpleTable 
+        tableHeaderColor="#9E42B0"
+        tableHead={["ID", "Name", "Country", "City", "Salary"]}
+        tableData={[
+          ['1', "Samrath","India","Jaipur","$12,000"],
+          ['2', "Samrath","India","Jaipur","$12,000"],
+          ['3', "Samrath","India","Jaipur","$12,000"],
+          ['4', "Samrath","India","Jaipur","$12,000"],
+          ['5', "Samrath","India","Jaipur","$12,000"],
+        ]}
+        />
+          </Grid>
+
+          
+
         </div>
 
   );
