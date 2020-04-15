@@ -2,24 +2,16 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles,useTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
-
-
 import {
     BrowserRouter as Router,
     Switch,
@@ -28,57 +20,19 @@ import {
   } from "react-router-dom";
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-
-//import { mainListItems, secondaryListItems } from './listItems';
-// import Chart from './Chart';
-// import Deposits from './Deposits';
-// import Orders from './Orders';
-
-
-
 import Dashboard1 from './Dashboard';
 import USerProfile from './USerProfile';
 import Tables from './Tables';
-import SimpleTable from './SimpleTable';
-
-
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
-import AssignmentIcon from '@material-ui/icons/Assignment';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
-
-
-
 import MenuList from "@material-ui/core/MenuList";
 import Grow from "@material-ui/core/Grow";
-
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-
-
 import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-
+import Popper from '@material-ui/core/Popper';
 
 const drawerWidth = 240;
 
@@ -87,15 +41,34 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   toolbar: {
-      marginTop:theme.spacing(20),
-    paddingRight: 24, // keep right padding when drawer closed
+    background:'#EEEEE',
+    ...theme.mixins.toolbar
   },
   toolbarIcon: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: '0 8px',
+    color:'red',
     ...theme.mixins.toolbar,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+    color:'black',
+  },
+  menuButtonHidden: {
+    display: 'none',
+  },
+  appBar: {
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+      background:"#EEEEEE",
+    },
+    background:'#EEEEEE',
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -104,41 +77,6 @@ const useStyles = makeStyles((theme) => ({
       marginTop:theme.spacing(100),
       paddingTop:20,
     },
-  },
-  text:{
-    color:"#BBB",
-    fontSize:10,
-  },
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-      background:"#EEEEEE",
-    },
-  },
-  
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
-  menuButtonHidden: {
-    display: 'none',
-  },
-  title: {
-    flexGrow: 1,
-    color:"#666666",
-    fontFamily:'sans-serif',
-    fontSize:17,
   },
   drawerPaper: {
     width: drawerWidth,
@@ -156,14 +94,36 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9),
     },
   },
-  toolbar: theme.mixins.toolbar,
+  text:{
+    color:"#BBB",
+    fontSize:10,
+  },
+  
+  
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  
+  
+  title: {
+    flexGrow: 1,
+    color:"#666666",
+    fontFamily:'sans-serif',
+    fontSize:17,
+  },
+  
+  
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     padding: theme.spacing(5),
     padding:20,
     marginTop:20,
-
   },
   container: {
     paddingTop: theme.spacing(4),
@@ -189,7 +149,32 @@ const useStyles = makeStyles((theme) => ({
 ,
 active: {
     backgroundColor: 'red',
+  },
+  menu_t:{
+      fontSize: "13px",
+      padding: "10px 20px",
+      margin: "0 5px",
+      borderRadius: "2px",
+      display: "block",
+      clear: "both",
+      fontWeight: "380",
+      color:'#666666',
+      height: "unset",
+      minHeight: "unset",
+      '&&:hover': {
+        backgroundColor: '#9E42B0',
+        color:'#ffffff',
+        }
+  },
+  nav_:{
+      '&&:hover': {
+        backgroundColor: '#f5f5f5',
+        color:'#000000',
+        },
+        color:'#666666',
+
   }
+
 }));
   
 export default function Admin(props) {
@@ -201,12 +186,8 @@ const { container } = props;
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   const [openProfile, setOpenProfile] = React.useState(null);
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const [title, setTitle] = React.useState("Dashboard");
+  const [color, setColor] = React.useState(0);
 
   const handleClickProfile = event => {
     if (openProfile && openProfile.contains(event.target)) {
@@ -221,6 +202,9 @@ const { container } = props;
   };
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
+    console.log("selected Item :"+event.target.innerText);
+    setTitle(event.target.innerText+"");
+    setColor(1);
     
 
   }
@@ -231,15 +215,13 @@ const { container } = props;
     const mainListItems=(
         <div>
     
-          <NavLink to="/" className="inactive" 
-          
-          activeClassName="active">  
+          <NavLink to="/" >  
           <MenuItem 
+          
+          className={classes.nav_}
+        
           button
-          
           selected={selectedIndex === 0}
-          
-          
           onClick={(event) => handleListItemClick(event, 0)}>
           
             <ListItemIcon>
@@ -252,9 +234,10 @@ const { container } = props;
     
           </NavLink>      
     
-          <NavLink to="/USerProfile" className="inactive" activeClassName="active">
+          <NavLink to="/USerProfile" >
     
           <ListItem 
+          className={classes.nav_}
           button
           selected={selectedIndex === 1}
           onClick={(event) => handleListItemClick(event, 1)}>
@@ -267,8 +250,9 @@ const { container } = props;
           </NavLink> 
           
     
-        <NavLink to="/TableList" className="inactive" activeClassName="active">
+        <NavLink to="/TableList" >
           <ListItem button
+          className={classes.nav_}
           selected={selectedIndex === 2}
           onClick={(event) => handleListItemClick(event, 2)}>
             <ListItemIcon>
@@ -279,8 +263,9 @@ const { container } = props;
           </ListItem>
           </NavLink>
     
-        <NavLink to="/Notification" className="inactive" activeClassName="active">
+        <NavLink to="/Notification" >
           <ListItem button
+          className={classes.nav_}
           selected={selectedIndex === 3}
           onClick={(event) => handleListItemClick(event, 3)}>
             <ListItemIcon>
@@ -292,6 +277,7 @@ const { container } = props;
           </NavLink>
     
           <ListItem button
+          className={classes.nav_}
           selected={selectedIndex === 4}
           onClick={(event) => handleListItemClick(event, 4)}>
             <ListItemIcon>
@@ -317,57 +303,64 @@ const { container } = props;
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
+            className={classes.menuButton}>
             <MenuIcon />
           </IconButton>
 
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            {title}
           </Typography>
 
+          <div style={{display:'flex'}}>
           <IconButton onClick={handleClickProfile} primary  color="black">
                 <PersonOutlineIcon/>
           </IconButton>
 
-          <Menu
-        id="simple-menu"
-        anchorEl={openProfile}
-        
-        open={Boolean(openProfile)}
-        
-      >
+          <Popper
+            open={Boolean(openProfile)}
+            anchorEl={openProfile}
+            transition
+            disablePortal>
+            {({TransitionProps,placement})=>(
+            <Grow
+              {...TransitionProps}
+              id="profile-menu-list-grow"
+              style={{
+                transformOrigin:
+                  placement === "bottom" ? "center top" : "center bottom"
+              }}
+            >
+
                 <Paper>
                 <ClickAwayListener onClickAway={handleCloseProfile}>
                   <MenuList role="menu">
                     <MenuItem
-                      onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
-                    >
+                        className={classes.menu_t}
+                        onClick={handleCloseProfile}>
                       Profile
                     </MenuItem>
                     <MenuItem
                       onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
-                    >
+                      className={classes.menu_t}>
                       Settings
                     </MenuItem>
                     <Divider light />
                     <MenuItem
                       onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
-                    >
+                      className={classes.menu_t}>
                       Logout
                     </MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
-              </Menu>
+              </Grow>)}
+              </Popper>
 
+          </div>
         </Toolbar>
+
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
     
         <Hidden smUp implementation="css">
           <Drawer
@@ -380,7 +373,7 @@ const { container } = props;
               paper: classes.drawerPaper,
             }}
             ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
+              keepMounted: true, 
             }}
           >
             {mainListItems}
@@ -393,8 +386,7 @@ const { container } = props;
               paper: classes.drawerPaper,
             }}
             variant="permanent"
-            open
-          >
+            open>
             {mainListItems}
             
           </Drawer>
@@ -405,8 +397,7 @@ const { container } = props;
               <Route path="/" exact component={Dashboard1} />
               <Route path="/USerProfile" component={USerProfile} />
               <Route path="/TableList" component={Tables} />
-              
-            </Switch>
+        </Switch>
 
       </main>
 

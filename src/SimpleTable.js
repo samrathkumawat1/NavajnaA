@@ -20,16 +20,23 @@ const useStyles = makeStyles((theme)=>({
   },
 
   tabelcell1:{
-      color:"#333333"
+      color:"#333333",
+      
   },
   tableResponsive:{
     width: "100%",
     marginTop: theme.spacing(3),
     overflowX: "auto"
+  },
+  table_row:{
+    '&&:hover': {
+      backgroundColor: '#f5f5f5',
+      color:'#ffffff',
+      }
   }
 }));
 export default function SimpleTable(props) {
-  const{tableHead,tableHeaderColor,tableData}=props;
+  const{tableHead,tableHeaderColor,tableData,hovers}=props;
   const classes = useStyles();
   
 
@@ -56,19 +63,36 @@ export default function SimpleTable(props) {
           
         <TableBody>
           {tableData.map((props,key) => (
-            <TableRow key={key}>
-              {
-                props.map((props,key)=>{
-                  return(
-                      <TableCell key={key} className={classes.tabelcell1} >
-                        {props}
-                      </TableCell>
-                  );
-                })
-              }
-              
-              </TableRow>
-          ))}
+
+            hovers=="yes" )?
+            (
+            <TableRow key={key} className={classes.table_row} >
+            {
+              props.map((props,key)=>{
+                return(
+                    <TableCell key={key} className={classes.tabelcell1} >
+                      {props}
+                    </TableCell>
+                );
+              })
+            }
+            </TableRow>
+            ):
+            (
+            <TableRow key={key}  >
+            {
+              props.map((props,key)=>{
+                return(
+                    <TableCell key={key} className={classes.tabelcell1} >
+                      {props}
+                    </TableCell>
+                );
+              })
+            }
+            </TableRow>
+            )
+
+          )}
         </TableBody>
       </Table>
       </div>

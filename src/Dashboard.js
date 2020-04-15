@@ -150,14 +150,17 @@ export default function Dashboard1(props){
                <Grid item style={{paddingBottom:10}} 
                xs={12} sm={12} md={6} >
                
+               
                <Card variant="outlined">
                   <CardHeader 
                     cardBackgroundColor="#f49c31"
               headerTitle="Employees State"
               actionTitle="New employees on 15th September, 2016"
                   />  
+                  
                   <SimpleTable 
                     tableHeaderColor="#f49c31"
+                    hovers="no"
               tableHead={["ID", "Name", "Salary", "Country"]}
               tableData={[
                     ["1", "Dakota Rice", "$36,738", "Niger"],
@@ -166,8 +169,11 @@ export default function Dashboard1(props){
                     ["4", "Philip Chaney", "$38,735", "Korea"]
                     ]}
                   />
+                  
                   </Card>
+                  
                </Grid>
+               
                
           </Grid>
           

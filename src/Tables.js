@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import TablePage from "./m_table";
 import CardHeader from "./CardHeader";
 import Card from '@material-ui/core/Card';
+import Container from '@material-ui/core/Container';
 
 
 const useStyles = makeStyles({
@@ -52,11 +53,9 @@ tablecell1:{
 export default function Tables(props){
   const { container } = props;
   return (
-      <div style={{display:'flex',flexDirection:'column',
-      background:"#EEEEEE"}} >
         
-      
-        
+        <Container fluid>
+          
           <Grid item xs={12} sm={12} md={12} >
           <Card variant="outlined">
           <CardHeader 
@@ -67,6 +66,7 @@ export default function Tables(props){
 
         <SimpleTable 
         tableHeaderColor="#9E42B0"
+        hovers="no"
         tableHead={["ID", "Name", "Country", "City", "Salary"]}
         tableData={[
           ['1', "Samrath","India","Jaipur","$12,000"],
@@ -86,10 +86,10 @@ export default function Tables(props){
         cardBackgroundColor="#9E42B0"
         headerTitle="Table on Plain Background"
         actionTitle="Here is a subtitle for this table"
-        />  
-
+        /> 
         <SimpleTable 
         tableHeaderColor="#9E42B0"
+        hovers="yes"
         tableHead={["ID", "Name", "Country", "City", "Salary"]}
         tableData={[
           ['1', "Samrath","India","Jaipur","$12,000"],
@@ -101,9 +101,10 @@ export default function Tables(props){
         />
           </Grid>
 
+          </Container>
           
 
-        </div>
+        
 
   );
 }
