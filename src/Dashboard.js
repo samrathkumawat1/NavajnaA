@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { makeStyles,useTheme } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
@@ -11,12 +8,9 @@ import CustomChart from './Chart';
 import CustomCard from './Card';
 import Table from "@material-ui/core/Table";
 import Card from "@material-ui/core/Card";
-
 import CustomTabs from './Tabs';
 import SimpleTable from './SimpleTable';
-
 import CardHeader from './CardHeader';
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -114,26 +108,12 @@ const useStyles = makeStyles((theme) => ({
       height: 240,
     },
   }));
-
-  function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
-          Your Website
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
   
 
 export default function Dashboard1(props){
     const { container } = props;
   const classes = useStyles();
   const theme = useTheme();
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <div style={{display:'flex',flexDirection:'column',
         flex:'1',background:"#EEEEEE"}}>

@@ -21,7 +21,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Button from '@material-ui/core/Button';
 import Colors from './Colors';
 
-import avatar from "./assets/marc.jpg";
+import avatar from "./assets/image.jpeg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     color:theme.spacing('#9E42B0'),
-    
     marginTop:10,
   },
   cardAvater:{
@@ -50,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#C7C7C7",
     marginTop: 25,
     marginBottom: 15,
-
     fontSize: "11px",
     fontWeight: "300",
     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
@@ -107,6 +105,8 @@ export default function USerProfile() {
   
             </div>
         </Card>
+
+        
           <Card className={classes.root} variant="outlined">
             <Grid container  style={{marginTop:5,paddingBottom:10,padding:15}}>
 
