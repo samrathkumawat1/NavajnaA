@@ -7,6 +7,7 @@ import Admin from './Admin';
 import CustomCard from './Card';
 import App from './App';
 import CustomChart from './Chart';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import SimpleTable from "./SimpleTable";
 
@@ -22,10 +23,11 @@ import Tables from './Tables';
 ReactDOM.render(
     <Router >
     <Switch>
-    <Route exact path="/" component={Admin} />
-    <Route path="/TableList" component={Tables}/>
-    <Route path="/USerProfile" component={USerProfile}/>
-    <Route path="/LogInPage" component={LogInPage} />
+    <Route exact path="/" component={LogInPage} />
+    <Route  path="/Dashboard" component={Admin} />
+    <Route path="/Dashboard/TableList" component={Tables}/>
+    <Route path="/Dashboard//USerProfile" component={USerProfile}/>
+    
     
     
     </Switch>

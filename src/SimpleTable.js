@@ -1,11 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import Table from 'react-bootstrap/Table'
 import Card from '@material-ui/core/Card';
 
 const useStyles = makeStyles((theme)=>({
@@ -38,62 +33,60 @@ const useStyles = makeStyles((theme)=>({
 export default function SimpleTable(props) {
   const{tableHead,tableHeaderColor,tableData,hovers}=props;
   const classes = useStyles();
-  
 
   return (
-    
   
       <div className={classes.tableResponsive}>
       <Table className={classes.table} aria-label="customized table">
         
           {tableHead !== undefined ?
-          (<TableHead>
-          <TableRow>
+          (<thead>
+          <tr>
             {tableHead.map((props,key)=>{
               return(
-                <TableCell 
+                <th 
                   key={key} 
                   style={{color:tableHeaderColor+"" }}
                    >
                     {props}
-                </TableCell>);
+                </th>);
             })}
-            </TableRow>
-          </TableHead>) : null}
+            </tr>
+          </thead>) : null}
           
-        <TableBody>
+        <tbody>
           {tableData.map((props,key) => (
 
             hovers=="yes" )?
             (
-            <TableRow key={key} className={classes.table_row} >
+            <tr key={key} className={classes.table_row} >
             {
               props.map((props,key)=>{
                 return(
-                    <TableCell key={key} className={classes.tabelcell1} >
+                    <td key={key} className={classes.tabelcell1} >
                       {props}
-                    </TableCell>
+                    </td>
                 );
               })
             }
-            </TableRow>
+            </tr>
             ):
             (
-            <TableRow key={key}  >
+            <tr key={key}  >
             {
               props.map((props,key)=>{
                 return(
-                    <TableCell key={key} className={classes.tabelcell1} >
+                    <td key={key} className={classes.tabelcell1} >
                       {props}
-                    </TableCell>
+                    </td>
                 );
               })
             }
-            </TableRow>
+            </tr>
             )
 
           )}
-        </TableBody>
+        </tbody>
       </Table>
       </div>
       

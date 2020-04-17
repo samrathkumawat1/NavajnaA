@@ -9,7 +9,7 @@ import CustomCard from './Card';
 import Table from "@material-ui/core/Table";
 import Card from "@material-ui/core/Card";
 import CustomTabs from './Tabs';
-import SimpleTable from './SimpleTable';
+import SimpleTable from "./SimpleTable";
 import CardHeader from './CardHeader';
 const drawerWidth = 240;
 
@@ -115,44 +115,47 @@ export default function Dashboard1(props){
   const classes = useStyles();
   const theme = useTheme();
     return (
-        <div style={{display:'flex',flexDirection:'column',
+        <div style={{paddingLeft:10,marginTop:5,marginRight:10,display:'flex',flexDirection:'column',
         flex:'1',background:"#EEEEEE"}}>
           <CustomCard/>
           <CustomChart/>
 
-          <Grid container style={{marginTop:20,paddingBottom:10} } spacing={2}>
+          <Grid container style={{marginTop:15,paddingBottom:10,
+                  flexDirection:'row'}} spacing={2}>
               
               <Grid item xs={12} sm={12} md={6} >
                 < CustomTabs/>
               </Grid>
 
               
-               <Grid item style={{paddingBottom:10}} 
+              
+               <Grid item  
                xs={12} sm={12} md={6} >
                
-               
+            
                <Card variant="outlined">
                   <CardHeader 
                     cardBackgroundColor="#f49c31"
-              headerTitle="Employees State"
-              actionTitle="New employees on 15th September, 2016"
+                    headerTitle="Employees State"
+                    actionTitle="New employees on 15th September, 2016"
                   />  
                   
                   <SimpleTable 
                     tableHeaderColor="#f49c31"
                     hovers="no"
-              tableHead={["ID", "Name", "Salary", "Country"]}
-              tableData={[
-                    ["1", "Dakota Rice", "$36,738", "Niger"],
-                    ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                    ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                    ["4", "Philip Chaney", "$38,735", "Korea"]
-                    ]}
+                    tableHead={["ID", "Name", "Salary", "Country"]}
+                    tableData={[
+                       ["1", "Dakota Rice", "$36,738", "Niger"],
+                       ["2", "Minerva Hooper", "$23,789", "Curaçao"],
+                       ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
+                       ["4", "Philip Chaney", "$38,735", "Korea"]
+                     ]}
                   />
-                  
                   </Card>
                   
+                   
                </Grid>
+               
                
                
           </Grid>

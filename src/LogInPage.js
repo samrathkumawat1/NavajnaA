@@ -3,20 +3,42 @@ import ReactDOM from 'react-dom';
 import { Container, Row, Col, FormLabel } from 'react-bootstrap';
 import {Form}  from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, FormGroup, FormControl } from "react-bootstrap";
+import {  FormGroup, FormControl } from "react-bootstrap";
 import {Redirect} from 'react-router';
 import MainPage from './MainPage';
 import Card from '@material-ui/core/Card';
 import Grid from "@material-ui/core/Grid";
 import { makeStyles,useTheme } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
+const useStyles = makeStyles({
+    root: {
+      background: '#9E42B0',
+      borderRadius: 3,
+      border: 0,
+      color: 'white',
+      height: 48,
+      padding: '0 30px',
+      boxShadow: '0 3px 5px 2px ',
+    },
+    label: {
+      textTransform: 'capitalize',
+    },
+  });
 
-export default class LogInPage extends React.Component{
+  export default function LogInPage(props){
     
-    submit=()=>{
-       return console.log("hekk");
+    const classes = useStyles();
+    const [toDashboard, setToDashboard] = React.useState(false);
+
+    const submit=()=>{
+        console.log("clicked");
+        setToDashboard(true);
     }
-    render(){
+    if (toDashboard === true) {
+        return <Redirect to='/Dashboard' />
+      }
+    
         return(
 
             <Grid item  xs={12} sm={12} md={12}  >
@@ -32,7 +54,7 @@ export default class LogInPage extends React.Component{
                     </div>
 
                     
-                    <form style={{padding:'40px'}}>
+                    <form onSubmit={submit} style={{padding:'40px'}}>
                     <FormGroup controlId="email">
                        <FormLabel style={{color:'#666666'}}>Email Address</FormLabel>
                         <FormControl type="email" />
@@ -47,9 +69,12 @@ export default class LogInPage extends React.Component{
                         <label style={{color:'#666666'}}>Forgot Password ?</label>
                     </div>
 
-                    <div style={{marginTop:'50px',
-                    backgroundColor:'#9E42B0',textAlign:'center',alignContent:'center'}} >
-                     <Button style={{color:"#ffffff",backgroundColor:"#ffffff",width:200}}>
+                    <div style={{marginTop:'50px'
+                    ,textAlign:'center',alignContent:'center'}} >
+                     <Button type="submit" classes={{
+                        root: classes.root, 
+                         label: classes.label,
+                        }}>
                       LogIn
                     </Button>
 
@@ -63,5 +88,4 @@ export default class LogInPage extends React.Component{
                   
         );
     
-    }
 }

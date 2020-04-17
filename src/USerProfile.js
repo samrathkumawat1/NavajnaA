@@ -87,13 +87,13 @@ export default function USerProfile() {
 
   return (
 
-    <div style={{width:'550',heigth:'650'}}>
-    <Grid style={{marginTop:5,paddingBottom:10,padding:15}}  container spacing={2} >
+    <div class="container-fluid" style={{marginTop:15}} >
+    <Grid   container spacing={2} >
         <Grid item xs={12} sm={12} md={8}>
 
         <Card variant="outlined">
 
-            <div style={{display:'flex',paddingLeft:10,position:'relative',background:"#943FAD",
+            <div style={{display:'flex',paddingLeft:10,paddingRight:10,position:'relative',background:"#943FAD",
             paddingTop:10,paddingBottom:10,flexDirection:'column',textAlign:'justify'}} >
                 
                 <div style={{width:'auto',textAlign: 'left',display: "flex",
@@ -108,7 +108,7 @@ export default function USerProfile() {
 
         
           <Card className={classes.root} variant="outlined">
-            <Grid container  style={{marginTop:5,paddingBottom:10,padding:15}}>
+            <Grid container  style={{marginTop:5,paddingBottom:10,paddingLeft:10,paddingRight:10}}>
 
 
         <Grid item xs={12} sm={12} md={5}>

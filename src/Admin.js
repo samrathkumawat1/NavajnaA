@@ -33,6 +33,8 @@ import Grow from "@material-ui/core/Grow";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import MenuItem from '@material-ui/core/MenuItem';
 import Popper from '@material-ui/core/Popper';
+import LogInPage from './LogInPage';
+import {Redirect} from 'react-router';
 
 const drawerWidth = 240;
 
@@ -168,11 +170,18 @@ active: {
   },
   nav_:{
       '&&:hover': {
-        backgroundColor: '#f5f5f5',
-        color:'#000000',
+        backgroundColor: '#9E42B0',
+        color:'#ffffff',
         },
+        '&&:visited': {
+          backgroundColor: '#9E42B0',
+          color:'#ffffff',
+          },
         color:'#666666',
-
+  }
+  ,
+  active: {
+    backgroundColor: "red"
   }
 
 }));
@@ -186,14 +195,35 @@ const { container } = props;
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   const [openProfile, setOpenProfile] = React.useState(null);
+  const [toLogIn, setToLogIn] = React.useState(false);
   const [title, setTitle] = React.useState("Dashboard");
-  const [color, setColor] = React.useState(0);
+  const [s_color, setColor] = React.useState(0);
+
+  console.log("path:: ",window.location.pathname.split("/")[1]);
+  console.log("path:: ",window.location.pathname);
+
+  if(window.location.pathname=="/Dashboard/USerProfile")
+  {
+    //setTitle("User Profile");
+    //setSelectedIndex(1);
+  }
+  else if(window.location.pathname=="/Dashboard/TableList")
+  {
+
+    //setTitle("Table List");
+   // setSelectedIndex(2);
+  }
+
+  const getRoute = () => {
+    return window.location.pathname !== "/Dashboard/maps";
+  };
 
   const handleClickProfile = event => {
     if (openProfile && openProfile.contains(event.target)) {
       setOpenProfile(null);
     } else {
       setOpenProfile(event.currentTarget);
+      console.log("clicked"+event);
     }
   };
 
@@ -202,24 +232,32 @@ const { container } = props;
   };
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
+    if(mobileOpen==true){setMobileOpen(!mobileOpen);}
+    
+    
     console.log("selected Item :"+event.target.innerText);
     setTitle(event.target.innerText+"");
-    setColor(1);
+    
     
 
   }
-  const handleCloseProfile = () => {
+  const handleCloseProfile = (event) => {
     setOpenProfile(null);
+    console.log("selected Item :"+event.target.innerText);
+    if(event.target.innerText=="Logout")
+    {
+      setToLogIn(true);
+    }
   };
 
     const mainListItems=(
         <div>
     
-          <NavLink to="/" >  
+          <NavLink to="/Dashboard" 
+          >  
           <MenuItem 
-          
           className={classes.nav_}
-        
+          
           button
           selected={selectedIndex === 0}
           onClick={(event) => handleListItemClick(event, 0)}>
@@ -231,14 +269,14 @@ const { container } = props;
                             fontSize:14,color:'#666666'}} primary="Dashboard" />
           
           </MenuItem>
-    
           </NavLink>      
     
-          <NavLink to="/USerProfile" >
+          <NavLink to="/Dashboard/USerProfile" >
     
           <ListItem 
           className={classes.nav_}
           button
+          
           selected={selectedIndex === 1}
           onClick={(event) => handleListItemClick(event, 1)}>
           <ListItemIcon>
@@ -250,9 +288,10 @@ const { container } = props;
           </NavLink> 
           
     
-        <NavLink to="/TableList" >
+        <NavLink to="/Dashboard/TableList" >
           <ListItem button
           className={classes.nav_}
+          
           selected={selectedIndex === 2}
           onClick={(event) => handleListItemClick(event, 2)}>
             <ListItemIcon>
@@ -263,9 +302,10 @@ const { container } = props;
           </ListItem>
           </NavLink>
     
-        <NavLink to="/Notification" >
+        <NavLink to="/Dashboard/Notification" >
           <ListItem button
           className={classes.nav_}
+          
           selected={selectedIndex === 3}
           onClick={(event) => handleListItemClick(event, 3)}>
             <ListItemIcon>
@@ -279,6 +319,7 @@ const { container } = props;
           <ListItem button
           className={classes.nav_}
           selected={selectedIndex === 4}
+          
           onClick={(event) => handleListItemClick(event, 4)}>
             <ListItemIcon>
               <RoomOutlinedIcon/>
@@ -290,6 +331,11 @@ const { container } = props;
         </div>
       
     );
+
+    if(toLogIn===true)
+    {
+      return <Redirect to='/' />
+    }
 
   return (
       <Router>
@@ -392,14 +438,16 @@ const { container } = props;
           </Drawer>
         </Hidden>
       </nav>
-      <main style={{background:"#EEEEEE   ",padding:30,paddingTop:80}}>
+      
+      <div class="container-fluid"  style={{background:"#EEEEEE",padding:10,paddingTop:80}}>
         <Switch>
-              <Route path="/" exact component={Dashboard1} />
-              <Route path="/USerProfile" component={USerProfile} />
-              <Route path="/TableList" component={Tables} />
+              <Route path="/Dashboard" exact component={Dashboard1} />
+              <Route path="/Dashboard/USerProfile" component={USerProfile} />
+              <Route path="/Dashboard/TableList" component={Tables} />
+              <Redirect to="/Dashboard" />
         </Switch>
 
-      </main>
+      </div>
 
     </div>
     </Router>

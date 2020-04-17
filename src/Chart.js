@@ -144,7 +144,7 @@ var delays2 = 80,
         showArea: true,
       }),
       low: 0,
-      high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+      high: 50, 
       chartPadding: {
         top: 0,
         right: 0,
@@ -158,6 +158,7 @@ var delays2 = 80,
         if (data.type === "line" || data.type === "area") {
           data.element.animate({
             d: {
+              color:"#000",
               begin: 600,
               dur: 700,
               from: data.path
@@ -188,18 +189,18 @@ var delays2 = 80,
 const emailsSubscriptionChart = {
     data: {
       labels: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "Mai",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
+        "J",
+        "F",
+        "M",
+        "A",
+        "M",
+        "J",
+        "J",
+        "A",
+        "S",
+        "O",
+        "N",
+        "D"
       ],
       series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
     },
@@ -246,13 +247,9 @@ const emailsSubscriptionChart = {
     }
   };
   
-  // ##############################
-  // // // Completed Tasks
-  // #############################
-  
   const completedTasksChart = {
     data: {
-      labels: ["12am", "3pm", "6pm", "9pm", "12pm", "3am", "6am", "9am"],
+      labels: ["12A", "3P", "6P", "9P", "12P", "3A", "6A", "9A"],
       series: [[230, 750, 450, 300, 280, 240, 200, 190]]
     },
     options: {
@@ -310,16 +307,14 @@ const emailsSubscriptionChart = {
         flexDirection:'coloumn',display:'flex',
                 }}>
             <div style={{padding:10,background:"green"}} >
+
                 <ChartistGraph
-                    style={{color:'white', fontSize: '10px',
-                    fontFamily:'sans-serif',stroke:'#EEEEEE',strokeWidth: '1',
-                    strokeDasharray: '1px 1px',
-                    }}
                 className="ct-chart"
+                
                 data={dailySalesChart.data}
                 type="Line"
                 options={dailySalesChart.options}
-                    listener={dailySalesChart.animation}
+                listener={dailySalesChart.animation}
                 />
 
             </div>

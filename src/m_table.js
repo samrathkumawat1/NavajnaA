@@ -33,49 +33,45 @@ sort: 'asc'
 rows: [
 {
 'id': 1,
-'Samrath': 'Cell',
-'India': 'Cell',
-'Jaipur': 'Cell',
-'$20,000': 'Cell',
+'heading0': 'Cell',
+'heading1': 'Cell',
+'heading2': 'Cell',
+'heading3': 'Cell',
+'heading4': 'Cell',
+'heading5': 'Cell',
+'heading6': 'Cell',
+'heading7': 'Cell',
+'heading8': 'Cell'
 },
 {
 'id': 2,
-'Deepika': 'Cell',
-'India': 'Cell',
-'Jaipur': 'Cell',
-'$30,000': 'Cell',
-
+'heading0': 'Cell',
+'heading1': 'Cell',
+'heading2': 'Cell',
+'heading3': 'Cell',
+'heading4': 'Cell',
+'heading5': 'Cell',
+'heading6': 'Cell',
+'heading7': 'Cell',
+'heading8': 'Cell'
 },
 {
 'id': 3,
-'Shai': 'Cell',
-'India': 'Cell',
-'Jaipur': 'Cell',
-'$22,000': 'Cell',
-},
-
-{
-    'id': 4,
-    'Shai': 'Cell',
-    'India': 'Cell',
-    'Jaipur': 'Cell',
-    '$22,000': 'Cell',
-    }
-    ,
-
-{
-    'id': 5,
-    'Shai': 'Cell',
-    'India': 'Cell',
-    'Jaipur': 'Cell',
-    '$22,000': 'Cell',
-    }
-
+'heading0': 'Cell',
+'heading1': 'Cell',
+'heading2': 'Cell',
+'heading3': 'Cell',
+'heading4': 'Cell',
+'heading5': 'Cell',
+'heading6': 'Cell',
+'heading7': 'Cell',
+'heading8': 'Cell'
+}
 ]
 };
 
 return (
-<MDBTable style={{width:1040}} responsive>
+<MDBTable responsive>
   <MDBTableHead columns={data.columns} />
   <MDBTableBody rows={data.rows} />
 </MDBTable>

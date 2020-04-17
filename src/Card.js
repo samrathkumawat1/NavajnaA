@@ -124,7 +124,7 @@ export default function CustomCard() {
 
   return (
 
-    <Grid style={{marginTop:5,paddingBottom:10}} container spacing={4} >
+    <Grid style={{paddingBottom:10}} container spacing={4} >
         <Grid item xs={12} sm={6} md={3}>
         <Card className={classes.root} variant="outlined">
 

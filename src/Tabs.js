@@ -146,19 +146,15 @@ export default function CustomTabs() {
   };
 
   return (
-    <div className={classes.root}>
+    <div >
       <AppBar position="static">
         <Tabs
           variant="scrollable"
           value={value}
-          
           style={{backgroundColor:'#9E42B0',indicatorColor:"#9E42B0"}}
           onChange={handleChange}
           indicatorColor='#9E42B0'
-          
-          scrollButtons="auto"
-          
-        >
+          scrollButtons="auto">
           <LinkTab label={<div> <BugReportIcon style={{marginLeft:'3dp',marginTop:'5dp'}} />  Bugs</div>} 
                     style={{fontSize:12}} href="/drafts" {...a11yProps(0)} />
           <LinkTab label={<div> <CodeIcon style={{marginLeft:'3dp',marginTop:'5dp'}} />  Website</div>} 

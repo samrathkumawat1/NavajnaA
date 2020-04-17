@@ -54,7 +54,7 @@ export default function Tables(props){
   const { container } = props;
   return (
         
-        <Container fluid>
+        <div style={{marginTop:15}} class="container-fluid">
           
           <Grid item xs={12} sm={12} md={12} >
           <Card variant="outlined">
@@ -78,17 +78,15 @@ export default function Tables(props){
         />
 </Card>
           </Grid>
-          
-
           <Grid style={{marginTop:20}} item xs={12} sm={12} md={12} >
 
           <CardHeader 
-        cardBackgroundColor="#9E42B0"
+            cardBackgroundColor="#9E42B0"
         headerTitle="Table on Plain Background"
         actionTitle="Here is a subtitle for this table"
-        /> 
-        <SimpleTable 
-        tableHeaderColor="#9E42B0"
+            /> 
+            <SimpleTable 
+              tableHeaderColor="#9E42B0"
         hovers="yes"
         tableHead={["ID", "Name", "Country", "City", "Salary"]}
         tableData={[
@@ -97,14 +95,11 @@ export default function Tables(props){
           ['3', "Samrath","India","Jaipur","$12,000"],
           ['4', "Samrath","India","Jaipur","$12,000"],
           ['5', "Samrath","India","Jaipur","$12,000"],
-        ]}
-        />
+            ]}
+            />
           </Grid>
 
-          </Container>
-          
-
-        
+        </div>
 
   );
 }
